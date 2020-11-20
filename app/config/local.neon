@@ -1,0 +1,10 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+	database:
+		host: 127.0.0.1
+		name: flexsys-sandbox
+		user: flexsys
+		password: flexsys

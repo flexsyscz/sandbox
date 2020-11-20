@@ -1,0 +1,55 @@
+#
+# WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+# https://nette.org/security-warning
+#
+parameters:
+
+
+includes:
+	- parameters.php
+
+
+application:
+	mapping:
+		Admin: ['App\Modules\AdminModule\Presenters', '*', '*\*Presenter']
+		Frontend: ['App\Modules\FrontendModule\Presenters', '*', '*\*Presenter']
+		Error: App\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+database:
+	dsn: 'mysql:host=%database.host%;dbname=%database.name%'
+	user: %database.user%
+	password: %database.password%
+	options:
+		lazy: yes
+
+
+dbal:
+	driver: mysqli
+	host: %database.host%
+	database: %database.name%
+	username: %database.user%
+	password: %database.password%
+
+
+extensions:
+	dbal: Nextras\Dbal\Bridges\NetteDI\DbalExtension
+	orm: Nextras\Orm\Bridges\NetteDI\OrmExtension
+	model: App\Extensions\ModelExtension
+
+
+orm:
+	model: App\Model\Orm
+
+
+services:
+	router: App\Router\RouterFactory::createRouter
+	translator: Flexsyscz\Universe\Localization\Translator(%languages.default%, %languages.dictionaries%, ...)
+	formFactory: App\Forms\FormFactory
+	dateTimeProvider: Flexsyscz\Universe\Utils\DateTimeProvider
+	authenticator: App\Security\Authenticator
+	loggedUser: App\Security\LoggedUser

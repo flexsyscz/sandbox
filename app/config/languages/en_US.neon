@@ -1,0 +1,80 @@
+flexsyscz:
+	DateTimeProvider:
+		months:
+			january: january
+			february: february
+			march: march
+			april: april
+			may: may
+			june: june
+			july: july
+			august: august
+			september: september
+			october: october
+			november: november
+			december: december
+		days:
+			monday: monday
+			tuesday: tuesday
+			wednesday: wednesday
+			thursday: thursday
+			friday: friday
+			saturday: saturday
+			sunday: sunday
+		ago:
+			justNow: just now
+			second:
+				1: few moments ago
+				2: few moments ago
+				?: %s secs. ago
+			minute:
+				1: a minute ago
+				?: %s mins. ago
+			hour:
+				1: an hour ago
+				?: %s hrs. ago
+			day:
+				1: yesterday
+				?: %s days ago
+			week:
+				1: a week ago
+				?: %s weeks ago
+			month:
+				1: a month ago
+				?: %s months ago
+			year:
+				1: last year
+				?: %s years ago
+
+ui:
+	navbar:
+		toggleNavigation: Toggle navigation
+	toast:
+		close: Close
+
+messages:
+	security:
+		authRequiredCaption: Authentication required
+		authRequired: In order to access to the requested page you need to sign in with your credentials.
+		userNotFound: User not found.
+		invalidCredential: Invalid credentials.
+		unexpectedError: An unexpected error occurred.
+
+app:
+	title: Sandbox
+	Sign:
+		in:
+			title: Sign in
+			form:
+				username:
+					label: Username
+					rules:
+						required: Username is required.
+				password:
+					label: Password
+					rules:
+						required: Password is required.
+				submit:
+					label: Sign in
+		out:
+			title: Sign out

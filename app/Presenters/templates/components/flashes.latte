@@ -1,0 +1,21 @@
+{templateType App\Presenters\BaseTemplate}
+{varType Flexsyscz\UI\Messaging\Flash $flash}
+
+<div n:if="count($flashes) > 0" class="container-fluid">
+    <div class="position-relative" aria-live="polite" aria-atomic="true">
+        <div class="position-absolute" style="top: 0; right: 0; z-index: 1000;">
+            <div n:foreach="$flashes as $flash" n:class="toast, !$flash->message->name ? 'd-flex align-items-center', fade-show, ('bg-' . $flash->type)" data-show="true" role="alert" aria-live="assertive" aria-atomic="true">
+                <div n:if="$flash->message->name" class="toast-header">
+                    <i n:class="fas, in_array($flash->type, [Flexsyscz\UI\Messaging\MessageType::ERROR, Flexsyscz\UI\Messaging\MessageType::WARNING], true) ? fa-exclamation-triangle : ($flash->type === Flexsyscz\UI\Messaging\MessageType::SUCCESS ? fa-check-circle : fa-info-circle), mr-2"></i>
+                    <strong class="mr-auto">{_$flash->message->name}</strong>
+                    <small class="text-muted ml-2">{$dateTimeProvider->ago($flash->message->created)}</small>
+                    <button type="button" class="btn-close" data-dismiss="toast" aria-label="{_'ui.toast.close'}"></button>
+                </div>
+                <div n:class="toast-body, $flash->message->name ? bg-light : text-white">
+                    {_$flash->message->text}
+                </div>
+                <button n:if="!$flash->message->name" type="button" class="btn-close btn-close-white ml-auto mr-2" data-dismiss="toast" aria-label="{_'ui.toast.close'}"></button>
+            </div>
+        </div>
+    </div>
+</div>

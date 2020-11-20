@@ -1,0 +1,18 @@
+{templateType App\Presenters\BaseTemplate}
+
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex">
+				<div class="flex-grow-1">
+					<small class="text-muted">&copy; {date(Y)} {_'app.title'}</small>
+				</div>
+				<div n:if="$loggedUser->user->isLoggedIn()" class="ml-5">
+					<a n:href=":Frontend:Sign:out" class="ajax">
+						<small><i class="fas fa-sign-out-alt mr-2"></i>{_'app.Sign.out.title'}</small>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

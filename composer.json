@@ -1,0 +1,29 @@
+{
+	"name": "flexsyscz/sandbox",
+	"description": "The sandbox provides a default structure of Flexsys application bundle",
+	"license": ["BSD-3-Clause", "GPL-2.0-only", "GPL-3.0-only"],
+	"authors": [
+		{
+			"name": "Václav Lukeš",
+			"homepage": "https://www.vaclavlukes.cz"
+		}
+	],
+	"minimum-stability": "stable",
+	"require": {
+		"flexsyscz/universe": "dev-master",
+		"nette/tester": "~2.0",
+		"tracy/tracy": "^2.3",
+		"phpstan/phpstan": "^0.12",
+		"phpstan/phpstan-nette": "^0.12",
+		"dg/ftp-deployment": "^3.3",
+		"dg/adminer-custom": "^1.8"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app"
+		}
+	},
+	"scripts": {
+		"phpstan": "phpstan analyse --configuration phpstan.neon app bin www"
+	}
+}

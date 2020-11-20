@@ -1,0 +1,34 @@
+
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{ifset title}{include title|stripHtml} | {/ifset}Flexsys Sandbox</title>
+
+    <link rel="stylesheet" href="{$basePath}/assets/dist/css/style.css">
+    {block head}{/block}
+</head>
+
+<body>
+    <header n:block="header" n:snippet="header" class="mb-4">
+        {include components/header.latte}
+    </header>
+    <main n:block="main" n:snippet="main" class="mb-4">
+        {include components/flashes.latte}
+        {include content}
+    </main>
+    <footer n:block="footer" n:snippet="footer" class="bg-light bg-gradient pt-4 pb-5 border-top">
+        {include components/footer.latte}
+    </footer>
+
+    {block scripts}
+        <script src="{$basePath}/www/assets/dist/js/main.js"></script>
+    {/block}
+</body>
+</html>

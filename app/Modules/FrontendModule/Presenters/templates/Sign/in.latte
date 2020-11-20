@@ -1,0 +1,17 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <div class="offset-3 col-6">
+                <div class="card">
+                    <h5 n:block="title" class="card-header">{_'app.Sign.in.title'}</h5>
+                    <div class="card-body">
+                        {control signInForm}
+                    </div>
+                    <div class="card-footer text-muted text-left">
+                        <small>{_'app.title'}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{/block}
