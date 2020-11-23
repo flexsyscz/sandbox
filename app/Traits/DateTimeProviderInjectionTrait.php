@@ -12,7 +12,7 @@ use Flexsyscz\Universe\Utils\DateTimeProvider;
 trait DateTimeProviderInjectionTrait
 {
 	/** @var DateTimeProvider */
-	private $dateTimeProvider;
+	protected $dateTimeProvider;
 
 
 	/**

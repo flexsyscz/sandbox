@@ -12,7 +12,7 @@ use App\Security\LoggedUser;
 trait LoggedUserInjectionTrait
 {
 	/** @var LoggedUser */
-	private $loggedUser;
+	protected $loggedUser;
 
 
 	/**

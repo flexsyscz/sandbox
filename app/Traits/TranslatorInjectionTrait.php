@@ -12,7 +12,7 @@ use Flexsyscz\Universe\Localization\Translator;
 trait TranslatorInjectionTrait
 {
 	/** @var Translator */
-	private $translator;
+	protected $translator;
 
 
 	/**
