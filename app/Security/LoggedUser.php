@@ -39,11 +39,14 @@ class LoggedUser
 		$this->usersFacade = $usersFacade;
 		$this->entity = null;
 
-		$id = $user->identity->getId();
-		if($id) {
-			$entity = $this->usersFacade->repository->getById($user->identity->getId());
-			if($entity instanceof Users\User) {
-				$this->entity = $entity;
+		$identity = $user->getIdentity();
+		if($identity) {
+			$id = $identity->getId();
+			if ($id) {
+				$entity = $this->usersFacade->repository->getById($user->identity->getId());
+				if ($entity instanceof Users\User) {
+					$this->entity = $entity;
+				}
 			}
 		}
 	}
