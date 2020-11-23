@@ -1,10 +1,13 @@
-const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const webpack = require('webpack')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
-	entry: ['./www/assets/src/css/main.scss', './www/assets/src/js/main.js'],
+	entry: {
+		main: ['./www/assets/src/css/main.scss', './www/assets/src/js/main.js']
+	},
 	output: {
-		filename: 'js/main.js',
+		filename: 'js/[name].js',
 		path: path.resolve(__dirname, 'www/assets/dist'),
 		publicPath: '../'
 	},
@@ -12,6 +15,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: 'css/style.css',
 		}),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			'window.Nette': 'nette-forms'
+		})
 	],
 	module: {
 		rules: [
