@@ -1,2 +1,3 @@
 app/config/local.neon
 /composer.lock
+/version
