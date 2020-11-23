@@ -71,12 +71,6 @@ abstract class BasePresenter extends Presenter
 		$this->template->loggedUser = $this->loggedUser;
 		$this->template->dateTimeProvider = $this->dateTimeProvider;
 
-		if($this->isAjax()) {
-			$this->redrawControl('header');
-			$this->redrawControl('main');
-			$this->redrawControl('footer');
-		}
-
 		parent::beforeRender();
 	}
 }

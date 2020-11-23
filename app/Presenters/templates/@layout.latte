@@ -16,14 +16,16 @@
 </head>
 
 <body>
-    <header n:block="header" n:snippet="header" class="mb-4">
+    <header n:block="header" class="mb-4">
         {include components/header.latte}
     </header>
-    <main n:block="main" n:snippet="main" class="mb-4">
-        {include components/flashes.latte}
+    <main n:block="main" class="mb-4">
+        <div n:snippet="flashes">
+            {include components/flashes.latte}
+        </div>
         {include content}
     </main>
-    <footer n:block="footer" n:snippet="footer" class="bg-light bg-gradient pt-4 pb-5 border-top">
+    <footer n:block="footer" class="bg-light bg-gradient pt-4 pb-5 border-top">
         {include components/footer.latte}
     </footer>
 

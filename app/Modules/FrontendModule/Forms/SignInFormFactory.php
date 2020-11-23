@@ -47,7 +47,6 @@ final class SignInFormFactory
 		$this->callback = $callback;
 
 		$form = $this->factory->create();
-		$form->getElementPrototype()->setAttribute('class', 'ajax');
 
 		$form->addText('username', 'app.Sign.in.form.username.label')
 			->setRequired('app.Sign.in.form.username.rules.required');
