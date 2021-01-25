@@ -3,10 +3,9 @@
 # https://nette.org/security-warning
 #
 parameters:
-
-
-includes:
-	- parameters.php
+	languages:
+		default: App\Model\Languages\LanguageCode::getDefault()
+		dictionaries: App\Model\Languages\LanguageCode::getDictionaries(%appDir%/config/languages)
 
 
 application:

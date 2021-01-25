@@ -16,6 +16,15 @@ final class LanguageCode extends Enum
 
 
 	/**
+	 * @return string
+	 */
+	public static function getDefault(): string
+	{
+		return self::CS;
+	}
+
+
+	/**
 	 * @param string $directory
 	 * @return array<string>
 	 */
