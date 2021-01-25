@@ -47,7 +47,7 @@ orm:
 
 services:
 	router: App\Router\RouterFactory::createRouter
-	translator: Flexsyscz\Universe\Localization\Translator(%languages.default%, %languages.dictionaries%, ...)
+	translator: Flexsyscz\Universe\Localization\Translator(%debugMode%, %languages.default%, %languages.dictionaries%, ...)
 	formFactory: App\Forms\FormFactory
 	dateTimeProvider: Flexsyscz\Universe\Utils\DateTimeProvider
 	authenticator: App\Security\Authenticator
