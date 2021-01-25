@@ -44,8 +44,10 @@ abstract class BasePresenter extends Presenter
 	/**
 	 * @throws Nette\Application\BadRequestException
 	 */
-	public function beforeRender()
+	protected function beforeRender()
 	{
+		parent::beforeRender();
+
 		try {
 			$languages = $this->languagesFacade->repository->findAll();
 			$currentLanguage = $languages->getBy(['code' => LanguageCode::getByLanguageAndCountry($this->lang, $this->country)]);
@@ -70,7 +72,5 @@ abstract class BasePresenter extends Presenter
 		$this->template->currentLanguage = $currentLanguage;
 		$this->template->loggedUser = $this->loggedUser;
 		$this->template->dateTimeProvider = $this->dateTimeProvider;
-
-		parent::beforeRender();
 	}
 }
