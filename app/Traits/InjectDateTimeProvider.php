@@ -6,10 +6,10 @@ use Flexsyscz\Universe\Utils\DateTimeProvider;
 
 
 /**
- * Trait DateTimeProviderInjectionTrait
+ * Trait InjectDateTimeProvider
  * @package App\Traits
  */
-trait DateTimeProviderInjectionTrait
+trait InjectDateTimeProvider
 {
 	/** @var DateTimeProvider */
 	protected $dateTimeProvider;

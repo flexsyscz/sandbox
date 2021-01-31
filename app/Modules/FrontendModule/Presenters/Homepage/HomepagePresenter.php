@@ -32,6 +32,6 @@ final class HomepagePresenter extends Presenters\FrontendBasePresenter
 
 	public function handleSayHello(): void
 	{
-		$this->flashInfo('Hello world!');
+		$this->flashInfo('sayHello');
 	}
 }

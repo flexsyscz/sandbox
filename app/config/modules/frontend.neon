@@ -6,4 +6,6 @@ parameters:
 
 
 services:
-	- App\Modules\FrontendModule\Forms\SignInFormFactory
+	signInFormFactory:
+		factory: App\Modules\FrontendModule\Forms\SignInFormFactory
+		inject: true

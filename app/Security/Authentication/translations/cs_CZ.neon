@@ -1,0 +1,5 @@
+messageCaption: Vyžaduje přihlášení
+authenticationRequired: Pro přístup k požadované stránce se musíte přihlásit pod svým uživatelským účtem.
+userNotFound: Uživatel neexistuje.
+invalidCredential: Neplatné přihlašovací údaje.
+unexpectedError: Nastala neočekávaná chyba.

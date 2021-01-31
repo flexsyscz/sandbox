@@ -15,14 +15,13 @@ use Nette;
 abstract class AdminBasePresenter extends BasePresenter
 {
 	/**
-	 * @param mixed $element
+	 * @param $element
 	 * @throws Nette\Application\AbortException
-	 * @throws Nette\Application\ForbiddenRequestException
 	 */
 	public function checkRequirements($element): void
 	{
 		if(!$this->getUser()->isLoggedIn()) {
-			$this->flashWarning('messages.security.authRequired', 'messages.security.authRequiredCaption');
+			$this->flashWarning('!authenticator.authenticationRequired', '!authenticator.messageCaption');
 			$this->redirect(':Frontend:Sign:in');
 		}
 

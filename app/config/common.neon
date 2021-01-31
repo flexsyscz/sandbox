@@ -3,9 +3,11 @@
 # https://nette.org/security-warning
 #
 parameters:
-	languages:
-		default: App\Model\Languages\LanguageCode::getDefault()
-		dictionaries: App\Model\Languages\LanguageCode::getDictionaries(%appDir%/config/languages)
+	translator:
+		debugMode: %debugMode%
+		namespace: layout
+		default: App\Model\Languages\LanguageCode::CS
+		languages: App\Model\Languages\LanguageCode::getDictionaries(%appDir%/Presenters/translations)
 
 
 application:
@@ -47,8 +49,13 @@ orm:
 
 services:
 	router: App\Router\RouterFactory::createRouter
-	translator: Flexsyscz\Universe\Localization\Translator(%debugMode%, %languages.default%, %languages.dictionaries%, ...)
+	translator: Flexsyscz\Universe\Localization\Translator(%translator%, ...)
+	translatorNamespaceFactory: Flexsyscz\Universe\Localization\TranslatorNamespaceFactory
 	formFactory: App\Forms\FormFactory
-	dateTimeProvider: Flexsyscz\Universe\Utils\DateTimeProvider
-	authenticator: App\Security\Authenticator
+	dateTimeProvider:
+		factory: Flexsyscz\Universe\Utils\DateTimeProvider
+		inject: true
+	authenticator:
+		factory: App\Security\Authentication\Authenticator
+		inject: true
 	loggedUser: App\Security\LoggedUser

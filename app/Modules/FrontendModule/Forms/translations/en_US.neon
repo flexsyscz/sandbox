@@ -1,0 +1,10 @@
+username:
+	label: Username
+	rules:
+		required: Username is required.
+password:
+	label: Password
+	rules:
+		required: Password is required.
+submit:
+	label: Sign in

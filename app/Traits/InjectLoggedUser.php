@@ -6,10 +6,10 @@ use App\Security\LoggedUser;
 
 
 /**
- * Trait LoggedUserInjectionTrait
+ * Trait InjectLoggedUser
  * @package App\Traits
  */
-trait LoggedUserInjectionTrait
+trait InjectLoggedUser
 {
 	/** @var LoggedUser */
 	protected $loggedUser;

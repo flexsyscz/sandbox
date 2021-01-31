@@ -3,8 +3,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-gradient border-bottom">
     <div class="container">
-        <a class="navbar-brand" n:href=":Frontend:Homepage:">{_'app.title'}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{_'ui.navbar.toggleNavigation'}">
+        <a class="navbar-brand" n:href=":Frontend:Homepage:">{_'!layout.title'}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{_'!layout.header.toggleNavigation'}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -16,14 +16,14 @@
                     {if $loggedUser->user->isLoggedIn()}
                         <a n:href=":Admin:Dashboard:" class="nav-link"><i class="fas fa-user mr-2"></i>{$loggedUser->entity->displayName}</a>
                     {else}
-                        <a n:href=":Frontend:Sign:in" class="nav-link"><i class="fas fa-sign-in-alt mr-2"></i>{_'app.Sign.in.title'}</a>
+                        <a n:href=":Frontend:Sign:in" class="nav-link"><i class="fas fa-sign-in-alt mr-2"></i>{_'!layout.header.signIn'}</a>
                     {/if}
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-flag mr-2"></i>{$currentLanguage->name}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li n:foreach="$languages->fetchAll() as $language">
-                            <a n:href="this lang => $language->short" n:class="dropdown-item, $currentLanguage->code->getValue() === $language->code->getValue() ? active">{$language->name}</a>
+                            <a n:href="this locale => $language->short" n:class="dropdown-item, $currentLanguage->code->getValue() === $language->code->getValue() ? active">{$language->name}</a>
                         </li>
                     </ul>
                 </li>

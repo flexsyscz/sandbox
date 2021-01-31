@@ -1,0 +1,5 @@
+messageCaption: Authentication required
+authenticationRequired: In order to access to the requested page you need to sign in with your credentials.
+userNotFound: User not found.
+invalidCredential: Invalid credentials.
+unexpectedError: An unexpected error occurred.

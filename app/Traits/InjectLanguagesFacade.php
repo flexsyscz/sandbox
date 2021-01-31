@@ -6,10 +6,10 @@ use App\Model\Languages\LanguagesFacade;
 
 
 /**
- * Trait LanguagesFacadeInjectionTrait
+ * Trait InjectLanguagesFacade
  * @package App\Traits
  */
-trait LanguagesFacadeInjectionTrait
+trait InjectLanguagesFacade
 {
 	/** @var LanguagesFacade */
 	private $languagesFacade;

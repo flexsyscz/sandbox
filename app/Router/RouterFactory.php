@@ -22,10 +22,10 @@ final class RouterFactory
 	{
 		$router = new RouteList;
 		$router->withModule('Admin')
-			->addRoute('admin/<lang=cs [a-z]{2}>[-<country>]/<presenter>/<action>', 'Dashboard:default');
+			->addRoute('admin/<locale=cs [a-z]{2}>[-<country>]/<presenter>/<action>', 'Dashboard:default');
 
 		$router->withModule('Frontend')
-			->addRoute('<lang=cs [a-z]{2}>[-<country>]/<presenter>/<action>', 'Homepage:default');
+			->addRoute('<locale=cs [a-z]{2}>[-<country>]/<presenter>/<action>', 'Homepage:default');
 
 		return $router;
 	}

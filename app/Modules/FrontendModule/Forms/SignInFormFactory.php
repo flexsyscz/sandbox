@@ -4,6 +4,7 @@ namespace App\Modules\FrontendModule\Forms;
 
 use App\Forms\FormFactory;
 use App\Forms\SignInFormValues;
+use Flexsyscz\Universe\Localization\TranslatedComponent;
 use Nette;
 use Nette\Application\UI\Form;
 
@@ -15,6 +16,7 @@ use Nette\Application\UI\Form;
 final class SignInFormFactory
 {
 	use Nette\SmartObject;
+	use TranslatedComponent;
 
 	/** @var FormFactory */
 	private $factory;
@@ -46,15 +48,16 @@ final class SignInFormFactory
 	{
 		$this->callback = $callback;
 
-		$form = $this->factory->create();
+		$form = $this->factory->create()
+			->setTranslator($this->translatorNamespace);
 
-		$form->addText('username', 'app.Sign.in.form.username.label')
-			->setRequired('app.Sign.in.form.username.rules.required');
+		$form->addText('username', 'username.label')
+			->setRequired('username.rules.required');
 
-		$form->addPassword('password', 'app.Sign.in.form.password.label')
-			->setRequired('app.Sign.in.form.password.rules.required');
+		$form->addPassword('password', 'password.label')
+			->setRequired('password.rules.required');
 
-		$form->addSubmit('submit', 'app.Sign.in.form.submit.label');
+		$form->addSubmit('submit', 'submit.label');
 
 		$form->onSuccess[] = [$this, 'onSuccess'];
 

@@ -11,17 +11,9 @@ use MabeEnum\Enum;
  */
 final class LanguageCode extends Enum
 {
+	/** @var string */
 	const CS = 'cs_CZ';
 	const EN = 'en_US';
-
-
-	/**
-	 * @return string
-	 */
-	public static function getDefault(): string
-	{
-		return self::CS;
-	}
 
 
 	/**

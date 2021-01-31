@@ -1,24 +1,30 @@
 <?php declare(strict_types=1);
 
-namespace App\Security;
+namespace App\Security\Authentication;
 
 use App\Model\Users\User;
 use App\Model\Users\UsersFacade;
+use Flexsyscz\Universe\Localization\TranslatedComponent;
+use Nette;
 use Nette\Security\AuthenticationException;
-use Nette\Security\IAuthenticator;
-use Nette\Security\Identity;
 use Nette\Security\IIdentity;
 use Nette\Security\Passwords;
+use Nette\Security\SimpleIdentity;
 use Nextras\Dbal\Drivers\Exception\DriverException;
 use Nextras\Orm\Entity\ToArrayConverter;
 
 
 /**
  * Class Authenticator
- * @package App\Security
+ * @package App\Security\Authentication
  */
-class Authenticator implements IAuthenticator
+class Authenticator implements Nette\Security\Authenticator
 {
+	use TranslatedComponent;
+
+	/** @var string */
+	public const TRANSLATOR_NAMESPACE = 'authenticator';
+
 	/** @var UsersFacade */
 	private $usersFacade;
 
@@ -39,21 +45,20 @@ class Authenticator implements IAuthenticator
 
 
 	/**
-	 * @param array<string> $credentials
+	 * @param string $user
+	 * @param string $password
 	 * @return IIdentity
 	 * @throws AuthenticationException
 	 */
-	function authenticate(array $credentials): IIdentity
+	function authenticate(string $user, string $password): IIdentity
 	{
-		list($username, $password) = $credentials;
-
-		$user = $this->usersFacade->repository->getBy(['username' => $username]);
+		$user = $this->usersFacade->repository->getBy(['username' => $user]);
 		if(!$user instanceof User) {
-			throw new AuthenticationException('messages.security.userNotFound', self::IDENTITY_NOT_FOUND);
+			throw new AuthenticationException($this->translatorNamespace->translate('userNotFound'), self::IDENTITY_NOT_FOUND);
 		}
 
 		if(!$this->passwords->verify($password, $user->password)) {
-			throw new AuthenticationException('messages.security.invalidCredential', self::INVALID_CREDENTIAL);
+			throw new AuthenticationException($this->translatorNamespace->translate('invalidCredential'), self::INVALID_CREDENTIAL);
 		}
 
 		try {
@@ -61,7 +66,7 @@ class Authenticator implements IAuthenticator
 				$this->usersFacade->updatePasswordHash($user, $this->passwords->hash($password));
 			}
 		} catch(DriverException $e) {
-			throw new AuthenticationException('messages.security.unexpectedError', self::FAILURE, $e);
+			throw new AuthenticationException($this->translatorNamespace->translate('unexpectedError'), self::FAILURE, $e);
 		}
 
 		unset($password);
@@ -70,6 +75,6 @@ class Authenticator implements IAuthenticator
 		unset($data['password']);
 		unset($data['role']);
 
-		return new Identity($user->id, [$user->role->getName()], $data);
+		return new SimpleIdentity($user->id, [$user->role->getName()], $data);
 	}
 }

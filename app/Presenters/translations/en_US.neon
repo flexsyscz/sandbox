@@ -1,0 +1,11 @@
+title: Sandbox
+
+flashes:
+	close: Close
+
+header:
+	toggleNavigation: Toggle navigation
+	signIn: Sign in
+
+footer:
+	signOut: Sign out
