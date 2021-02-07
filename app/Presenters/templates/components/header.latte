@@ -4,23 +4,23 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-gradient border-bottom">
     <div class="container">
         <a class="navbar-brand" n:href=":Frontend:Homepage:">{_'!layout.title'}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{_'!layout.header.toggleNavigation'}">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{_'!layout.header.toggleNavigation'}">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
             </ul>
-            <ul class="navbar-nav ml-5 mb-2 mb-lg-0">
+            <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
                 <li class="nav-item">
                     {if $loggedUser->user->isLoggedIn()}
-                        <a n:href=":Admin:Dashboard:" class="nav-link"><i class="fas fa-user mr-2"></i>{$loggedUser->entity->displayName}</a>
+                        <a n:href=":Admin:Dashboard:" class="nav-link"><i class="fas fa-user me-2"></i>{$loggedUser->entity->displayName}</a>
                     {else}
-                        <a n:href=":Frontend:Sign:in" class="nav-link"><i class="fas fa-sign-in-alt mr-2"></i>{_'!layout.header.signIn'}</a>
+                        <a n:href=":Frontend:Sign:in" class="nav-link"><i class="fas fa-sign-in-alt me-2"></i>{_'!layout.header.signIn'}</a>
                     {/if}
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-flag mr-2"></i>{$currentLanguage->name}</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-flag me-2"></i>{$currentLanguage->name}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li n:foreach="$languages->fetchAll() as $language">
                             <a n:href="this locale => $language->short" n:class="dropdown-item, $currentLanguage->code->getValue() === $language->code->getValue() ? active">{$language->name}</a>
