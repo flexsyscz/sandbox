@@ -5,6 +5,8 @@
 parameters:
 	translator:
 		debugMode: %debugMode%
+		logging: false
+		appDir: %appDir%
 		namespace: layout
 		default: App\Model\Languages\LanguageCode::CS
 		languages: App\Model\Languages\LanguageCode::getDictionaries(%appDir%/Presenters/translations)
@@ -20,6 +22,10 @@ application:
 session:
 	expiration: 14 days
 
+
+tracy:
+	bar:
+		- Flexsyscz\Universe\Localization\TranslationPanel
 
 database:
 	dsn: 'mysql:host=%database.host%;dbname=%database.name%'
