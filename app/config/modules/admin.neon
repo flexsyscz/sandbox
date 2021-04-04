@@ -3,3 +3,9 @@
 # https://nette.org/security-warning
 #
 parameters:
+
+
+services:
+	uploadProfilePhotoFormFactory:
+		factory: App\Modules\AdminModule\Forms\UploadProfilePhotoFormFactory
+		inject: true

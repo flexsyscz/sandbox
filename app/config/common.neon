@@ -11,6 +11,9 @@ parameters:
 		default: App\Model\Languages\LanguageCode::CS
 		languages: App\Model\Languages\LanguageCode::getDictionaries(%appDir%/Presenters/translations)
 
+	files:
+		data: %wwwDir%/data
+
 
 application:
 	mapping:
@@ -64,3 +67,5 @@ services:
 	authenticator:
 		factory: App\Security\Authentication\Authenticator
 		inject: true
+	receiver: Flexsyscz\Universe\FileSystem\Receiver
+	fileManager: Flexsyscz\Universe\FileSystem\FileManager(%files%)
