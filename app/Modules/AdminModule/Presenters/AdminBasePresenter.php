@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Modules\AdminModule\Presenters;
 
@@ -15,12 +16,12 @@ use Nette;
 abstract class AdminBasePresenter extends BasePresenter
 {
 	/**
-	 * @param $element
+	 * @param mixed $element
 	 * @throws Nette\Application\AbortException
 	 */
 	public function checkRequirements($element): void
 	{
-		if(!$this->getUser()->isLoggedIn()) {
+		if (!$this->getUser()->isLoggedIn()) {
 			$this->flashWarning('!authenticator.authenticationRequired', '!authenticator.messageCaption');
 			$this->redirect(':Frontend:Sign:in');
 		}

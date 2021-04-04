@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Traits;
 
@@ -15,9 +16,6 @@ trait InjectLoggedUser
 	protected $loggedUser;
 
 
-	/**
-	 * @param LoggedUser $loggedUser
-	 */
 	public function injectLoggedUser(LoggedUser $loggedUser): void
 	{
 		$this->loggedUser = $loggedUser;

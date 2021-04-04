@@ -16,7 +16,8 @@
 		"phpstan/phpstan": "^0.12",
 		"phpstan/phpstan-nette": "^0.12",
 		"dg/ftp-deployment": "^3.3",
-		"dg/adminer-custom": "^1.8"
+		"dg/adminer-custom": "^1.8",
+		"nette/coding-standard": "^v3.0"
 	},
 	"autoload": {
 		"psr-4": {

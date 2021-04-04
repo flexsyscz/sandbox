@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Modules\FrontendModule\Forms;
 
@@ -40,10 +41,6 @@ final class SignInFormFactory
 	}
 
 
-	/**
-	 * @param callable $callback
-	 * @return Form
-	 */
 	public function create(callable $callback): Form
 	{
 		$this->callback = $callback;
@@ -65,10 +62,6 @@ final class SignInFormFactory
 	}
 
 
-	/**
-	 * @param Form $form
-	 * @param SignInFormValues $values
-	 */
 	public function onSuccess(Form $form, SignInFormValues $values): void
 	{
 		try {

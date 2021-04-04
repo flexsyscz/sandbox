@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Model\Users;
 
@@ -11,6 +12,6 @@ use MabeEnum\Enum;
  */
 final class UserRole extends Enum
 {
-	const USER = 'user';
-	const ADMINISTRATOR = 'admin';
+	public const USER = 'user';
+	public const ADMINISTRATOR = 'admin';
 }

@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Presenters;
 
@@ -29,7 +30,6 @@ abstract class BasePresenter extends Presenter
 	use TranslatedComponent;
 	use Messages;
 
-
 	/**
 	 * @persistent string
 	 * @var string
@@ -58,18 +58,19 @@ abstract class BasePresenter extends Presenter
 
 		try {
 			$this->languages = $this->languagesFacade->repository->findAll();
-			$this->language = $this->languages->getBy(['code' => LanguageCode::getByLanguageAndCountry($this->locale, $this->country)]);
+			$language = $this->languages->getBy(['code' => LanguageCode::getByLanguageAndCountry($this->locale, $this->country)]);
 
-			if(!$this->language instanceof Language) {
+			if (!$language instanceof Language) {
 				throw new EntityNotFoundException('Language not found in the database.');
 			}
 
+			$this->language = $language;
 			$this->translatorNamespace->translator->setLanguage($this->language->code->getValue());
 
-		} catch(\TypeError $e) {
+		} catch (\TypeError $e) {
 			throw new Nette\Application\BadRequestException('Language not found.', 404);
 
-		} catch(EntityNotFoundException $e) {
+		} catch (EntityNotFoundException $e) {
 			throw new Nette\Application\BadRequestException($e->getMessage(), 404);
 		}
 	}

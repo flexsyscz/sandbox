@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Model\Users;
 
@@ -29,9 +30,6 @@ final class User extends Entity
 	}
 
 
-	/**
-	 * @return string
-	 */
 	protected function getterDisplayName(): string
 	{
 		return sprintf('%s %s', $this->firstName, $this->lastName);

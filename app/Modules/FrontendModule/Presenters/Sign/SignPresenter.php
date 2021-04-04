@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Modules\FrontendModule\Presenters\Sign;
 
@@ -42,12 +43,9 @@ final class SignPresenter extends FrontendBasePresenter
 	}
 
 
-	/**
-	 * @return Nette\Application\UI\Form
-	 */
 	protected function createComponentSignInForm(): Nette\Application\UI\Form
 	{
-		return $this->signInFormFactory->create(function() {
+		return $this->signInFormFactory->create(function () {
 			$this->redirect(':Admin:Dashboard:');
 		});
 	}

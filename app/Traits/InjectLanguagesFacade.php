@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Traits;
 
@@ -15,9 +16,6 @@ trait InjectLanguagesFacade
 	private $languagesFacade;
 
 
-	/**
-	 * @param LanguagesFacade $languagesFacade
-	 */
 	public function injectLanguagesFacade(LanguagesFacade $languagesFacade): void
 	{
 		$this->languagesFacade = $languagesFacade;

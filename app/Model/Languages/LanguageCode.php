@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Model\Languages;
 
@@ -11,9 +12,8 @@ use MabeEnum\Enum;
  */
 final class LanguageCode extends Enum
 {
-	/** @var string */
-	const CS = 'cs_CZ';
-	const EN = 'en_US';
+	public const CS = 'cs_CZ';
+	public const EN = 'en_US';
 
 
 	/**
@@ -23,7 +23,7 @@ final class LanguageCode extends Enum
 	public static function getDictionaries(string $directory): array
 	{
 		$dictionaries = [];
-		foreach(self::getConstants() as $code) {
+		foreach (self::getConstants() as $code) {
 			$dictionaries[$code] = sprintf('%s/%s.neon', $directory, $code);
 		}
 
@@ -31,16 +31,11 @@ final class LanguageCode extends Enum
 	}
 
 
-	/**
-	 * @param string $language
-	 * @param string|null $country
-	 * @return LanguageCode|null
-	 */
-	public static function getByLanguageAndCountry(string $language, string $country = null): ?LanguageCode
+	public static function getByLanguageAndCountry(string $language, string $country = null): ?self
 	{
 		$pattern = sprintf('#^%s_%s$#', $language, ($country ?: '.*'));
-		foreach(LanguageCode::getEnumerators() as $enum) {
-			if(preg_match($pattern, $enum->getValue())) {
+		foreach (self::getEnumerators() as $enum) {
+			if (preg_match($pattern, $enum->getValue())) {
 				return $enum;
 			}
 		}
@@ -49,11 +44,8 @@ final class LanguageCode extends Enum
 	}
 
 
-	/**
-	 * @return string
-	 */
 	public function getShort(): string
 	{
-		return strval(explode('_', $this->getValue())[0]);
+		return (string) (explode('_', $this->getValue())[0]);
 	}
 }

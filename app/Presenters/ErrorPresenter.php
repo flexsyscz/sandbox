@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Presenters;
 
@@ -30,10 +31,6 @@ final class ErrorPresenter implements Nette\Application\IPresenter
 	}
 
 
-	/**
-	 * @param Nette\Application\Request $request
-	 * @return Nette\Application\IResponse
-	 */
 	public function run(Nette\Application\Request $request): Nette\Application\IResponse
 	{
 		$e = $request->getParameter('exception');

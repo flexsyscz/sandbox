@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App;
 
@@ -11,9 +12,6 @@ use Nette\Configurator;
  */
 class Bootstrap
 {
-	/**
-	 * @return Configurator
-	 */
 	public static function boot(): Configurator
 	{
 		$configurator = new Configurator;
@@ -38,9 +36,6 @@ class Bootstrap
 	}
 
 
-	/**
-	 * @return Configurator
-	 */
 	public static function bootForTests(): Configurator
 	{
 		$configurator = self::boot();

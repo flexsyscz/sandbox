@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Security;
 
@@ -40,7 +41,7 @@ class LoggedUser
 		$this->entity = null;
 
 		$identity = $user->getIdentity();
-		if($identity) {
+		if ($identity) {
 			$id = $identity->getId();
 			if ($id) {
 				$entity = $this->usersFacade->repository->getById($user->identity->getId());
@@ -52,18 +53,12 @@ class LoggedUser
 	}
 
 
-	/**
-	 * @return User
-	 */
 	public function getUser(): User
 	{
 		return $this->user;
 	}
 
 
-	/**
-	 * @return Users\User|null
-	 */
 	public function getEntity(): ?Users\User
 	{
 		return $this->entity;

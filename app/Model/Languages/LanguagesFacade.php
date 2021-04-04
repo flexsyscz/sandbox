@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Model\Languages;
 
@@ -13,9 +14,6 @@ use App\Model\BaseFacade;
  */
 final class LanguagesFacade extends BaseFacade
 {
-	/**
-	 * @return LanguagesRepository
-	 */
 	public function getRepository(): LanguagesRepository
 	{
 		return $this->orm->languages;

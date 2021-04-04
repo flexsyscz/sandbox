@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Forms;
 
@@ -13,12 +14,9 @@ use Nette\Application\UI\Form;
  */
 final class FormFactory
 {
-	/**
-	 * @return Form
-	 */
 	public function create(): Form
 	{
-		$form = new Form();
+		$form = new Form;
 		$form->onRender[] = [Renderer::class, 'makeBootstrap5'];
 
 		return $form;

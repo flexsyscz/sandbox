@@ -1,4 +1,5 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Model\Languages;
 
@@ -14,7 +15,7 @@ final class LanguagesRepository extends Repository
 	/**
 	 * @return array<string>
 	 */
-	static function getEntityClassNames() : array
+	public static function getEntityClassNames(): array
 	{
 		return [Language::class];
 	}
