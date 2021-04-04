@@ -5,9 +5,9 @@ namespace App\Presenters;
 
 use App\Model\Languages\Language;
 use App\Model\Languages\LanguageCode;
+use App\Security\LoggedUser;
 use App\Traits\InjectDateTimeProvider;
 use App\Traits\InjectLanguagesFacade;
-use App\Traits\InjectLoggedUser;
 use Flexsyscz\UI\Messaging\Messages;
 use Flexsyscz\Universe\Exceptions\EntityNotFoundException;
 use Flexsyscz\Universe\Localization\TranslatedComponent;
@@ -25,7 +25,6 @@ use Nextras\Orm\Collection\ICollection;
 abstract class BasePresenter extends Presenter
 {
 	use InjectLanguagesFacade;
-	use InjectLoggedUser;
 	use InjectDateTimeProvider;
 	use TranslatedComponent;
 	use Messages;
@@ -85,7 +84,10 @@ abstract class BasePresenter extends Presenter
 
 		$this->template->languages = $this->languages;
 		$this->template->currentLanguage = $this->language;
-		$this->template->loggedUser = $this->loggedUser;
+
+		$identity = $this->user->getIdentity();
+		$this->template->loggedUser = $identity instanceof LoggedUser ? $identity : null;
+
 		$this->template->dateTimeProvider = $this->dateTimeProvider;
 	}
 }

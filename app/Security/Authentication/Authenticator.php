@@ -5,6 +5,7 @@ namespace App\Security\Authentication;
 
 use App\Model\Users\User;
 use App\Model\Users\UsersFacade;
+use App\Security\LoggedUser;
 use Flexsyscz\Universe\Localization\TranslatedComponent;
 use Nette;
 use Nette\Security\AuthenticationException;
@@ -19,7 +20,7 @@ use Nextras\Orm\Entity\ToArrayConverter;
  * Class Authenticator
  * @package App\Security\Authentication
  */
-class Authenticator implements Nette\Security\Authenticator
+final class Authenticator implements Nette\Security\Authenticator, Nette\Security\IdentityHandler
 {
 	use TranslatedComponent;
 
@@ -70,11 +71,37 @@ class Authenticator implements Nette\Security\Authenticator
 		}
 
 		unset($password);
+		return new SimpleIdentity($user->id, [$user->role->getName()], $this->getIdentityDataFromUserEntity($user));
+	}
 
+
+	public function sleepIdentity(IIdentity $identity): IIdentity
+	{
+		return new SimpleIdentity($identity->getData()['authToken']);
+	}
+
+
+	public function wakeupIdentity(IIdentity $identity): ?IIdentity
+	{
+		$user = $this->usersFacade->repository->getBy(['authToken' => $identity->getId()]);
+		if ($user instanceof User) {
+			$loggedUser = new LoggedUser($user->id, [$user->role->getName()], $this->getIdentityDataFromUserEntity($user));
+			return $loggedUser->setEntity($user);
+		}
+
+		return null;
+	}
+
+
+	/**
+	 * @param User $user
+	 * @return array<string|int>
+	 */
+	private function getIdentityDataFromUserEntity(User $user): array
+	{
 		$data = $user->toArray(ToArrayConverter::RELATIONSHIP_AS_ID);
 		unset($data['password'], $data['role']);
 
-
-		return new SimpleIdentity($user->id, [$user->role->getName()], $data);
+		return $data;
 	}
 }

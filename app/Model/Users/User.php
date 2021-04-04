@@ -11,6 +11,7 @@ use Nextras\Orm\Entity\Entity;
 
 /**
  * @property 		int         					$id      					{primary}
+ * @property 		string							$authToken
  * @property		string							$username
  * @property 		string							$password
  * @property 		UserRole						$role						{wrapper EnumWrapper}

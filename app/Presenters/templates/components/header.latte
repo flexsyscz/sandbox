@@ -13,7 +13,7 @@
             </ul>
             <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
                 <li class="nav-item">
-                    {if $loggedUser->user->isLoggedIn()}
+                    {if $user->isLoggedIn()}
                         <a n:href=":Admin:Dashboard:" class="nav-link"><i class="fas fa-user me-2"></i>{$loggedUser->entity->displayName}</a>
                     {else}
                         <a n:href=":Frontend:Sign:in" class="nav-link"><i class="fas fa-sign-in-alt me-2"></i>{_'!layout.header.signIn'}</a>

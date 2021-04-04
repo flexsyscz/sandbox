@@ -64,4 +64,3 @@ services:
 	authenticator:
 		factory: App\Security\Authentication\Authenticator
 		inject: true
-	loggedUser: App\Security\LoggedUser
