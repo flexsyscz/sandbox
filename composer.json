@@ -18,6 +18,7 @@
 		"dg/ftp-deployment": "^3.3",
 		"dg/adminer-custom": "^1.8",
 		"nette/coding-standard": "^v3.0",
+		"nette/code-checker": "^v3.1",
 		"ext-fileinfo": "*"
 	},
 	"autoload": {
