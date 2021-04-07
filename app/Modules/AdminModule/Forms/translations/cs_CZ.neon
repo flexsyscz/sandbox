@@ -3,8 +3,11 @@ photo:
 	rules:
 		required: Profilová fotka je povinný parametr.
 		maxSize: Max. velikost profilové fotky je %d MB.
+
 	errors:
 		default: Soubor se nepodařilo nahrát nebo je poškozen.
 		notImage: Soubor není typu obrázek.
+
 submit:
 	label: Uložit
+

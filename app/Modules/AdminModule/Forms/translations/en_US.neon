@@ -3,8 +3,11 @@ photo:
 	rules:
 		required: Profile photo is required.
 		maxSize: Max. size of profile photo is %d MB.
+
 	errors:
 		default: File cannot be uploaded.
 		notImage: File is not an image.
+
 submit:
 	label: Save
+
