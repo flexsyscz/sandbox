@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-php vendor/bin/phpstan analyse --configuration phpstan.neon app www
+php vendor/bin/phpstan analyse --configuration phpstan.neon app bin tests www
